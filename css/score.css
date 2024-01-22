@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 64px;
+}
+
+#high-scores{
+    font-size: 48px;
+}
+
+/* BUTTONS */
+#clear-scores-btn,
+#go-home-btn {
+    margin-top: 20px;
+    font-size: 16px;
+    height: 48px;
+    width: 150px;
+    font-size: 24px;
+    border-radius: 8px;
+    background-color: blueviolet;
+    color: white;
+    transition: filter 0.2s;
+}
+
+#go-home-btn:hover {
+    background-color: palevioletred;
+    color: white;
+    cursor: pointer;
+}
+
+#clear-scores-btn:hover {
+    background-color: palevioletred;
+    color: white;
+    cursor: pointer;
+}
