@@ -48,19 +48,37 @@ startBtn.addEventListener("click", startQuiz);
 // FUNCTIONS
 
 function startQuiz(){
-    //start timer
-    //display question and options
+    document.getElementById("start-container").style.display = "none";
+    quizContainer.style.display = "block";
+    displayQuestion();
+    timer();
 }
 
 function timer(){
-    //start once the startBtn clicked
-    //decrese by 10 seconds if answer wrong
-    //end quiz if hit 0 seconds
+    timerInterval = setInterval(function () {
+        timeLeft--;
+
+        
+        document.querySelector("header p").textContent = "Time: " + timeLeft;
+
+        
+        if (timeLeft <= 0) {
+            endQuiz();
+        }
+    }, 1000); 
 }
 
 function displayQuestion(){
-    //display question once the startBtn clicked
-    //run again after checkAnswer()
+    var currentQuestion = questions[currentQuestionIndex];
+    questionContainer.textContent = currentQuestion.question;
+
+    optionsContainer.innerHTML = "";
+    for (var i = 0; i < currentQuestion.options.length; i++) {
+        var option = document.createElement("button");
+        option.textContent = currentQuestion.options[i];
+        option.addEventListener("click", checkAnswer);
+        optionsContainer.appendChild(option);
+    }
 }
 
 function checkAnswer(){

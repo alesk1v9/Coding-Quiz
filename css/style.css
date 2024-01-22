@@ -41,6 +41,12 @@ main{
     width: 40%;
 }
 
+#answer-feedback{
+    margin: 18px;
+    display: none;
+    font-size: 30px;
+}
+
 #options-container{
     display: flex;
     flex-direction: column;
