@@ -27,3 +27,20 @@ var questions = [
       correctAnswer: 3
     }
   ];
+
+// GLOBAL VARIABLES
+
+var currentQuestionIndex = 0;
+var score = 0;
+var timeLeft = 75;
+
+var startBtn = document.getElementById("start-btn");
+var quizContainer = document.getElementById("quiz-container");
+var questionContainer = document.getElementById("question-container");
+var optionsContainer = document.getElementById("options-container");
+var resultContainer = document.getElementById("result-container");
+var timerInterval;
+
+// EVENT LISTNERS
+
+startBtn.addEventListener("click", startQuiz);
