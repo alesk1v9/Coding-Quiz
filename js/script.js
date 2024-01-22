@@ -44,3 +44,33 @@ var timerInterval;
 // EVENT LISTNERS
 
 startBtn.addEventListener("click", startQuiz);
+
+// FUNCTIONS
+
+function startQuiz(){
+    //start timer
+    //display question and options
+}
+
+function timer(){
+    //start once the startBtn clicked
+    //decrese by 10 seconds if answer wrong
+    //end quiz if hit 0 seconds
+}
+
+function displayQuestion(){
+    //display question once the startBtn clicked
+    //run again after checkAnswer()
+}
+
+function checkAnswer(){
+    //loop thru the options to check if answer is correct or wrong
+    //update the score depending on answer
+    //create an html element showing if answer was correct or worng
+    //move to next question after validation
+}
+
+function endQuiz(){
+    //finish quiz 
+    //take to scores page
+}
