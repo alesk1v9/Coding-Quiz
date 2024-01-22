@@ -39,11 +39,12 @@ var quizContainer = document.getElementById("quiz-container");
 var questionContainer = document.getElementById("question-container");
 var optionsContainer = document.getElementById("options-container");
 var resultContainer = document.getElementById("result-container");
+var answerFeedback = document.getElementById('answer-feedback');
 var timerInterval;
 
 // EVENT LISTNERS
 
-startBtn.addEventListener("click", startQuiz);
+ startBtn.addEventListener("click", startQuiz);
 
 // FUNCTIONS
 
@@ -68,6 +69,8 @@ function timer(){
     }, 1000); 
 }
 
+
+
 function displayQuestion(){
     var currentQuestion = questions[currentQuestionIndex];
     questionContainer.textContent = currentQuestion.question;
@@ -81,14 +84,55 @@ function displayQuestion(){
     }
 }
 
-function checkAnswer(){
-    //loop thru the options to check if answer is correct or wrong
-    //update the score depending on answer
-    //create an html element showing if answer was correct or worng
-    //move to next question after validation
+function checkAnswer(event){
+    var selectedOption = event.target.textContent;
+    var currentQuestion = questions[currentQuestionIndex];
+    
+
+    // Check if the selected option is correct
+    if (selectedOption === currentQuestion.options[currentQuestion.correctAnswer]) {
+        score++;
+        answerFeedback.style.display = "block"
+        answerFeedback.textContent = "Correct!";
+
+    }else {
+        timeLeft -= 10;
+        answerFeedback.style.display = "block"
+        answerFeedback.textContent = "Wrong!";
+    }
+
+    setTimeout(function () {
+        answerFeedback.textContent = "";
+    }, 3000);
+    // Move to the next question
+    currentQuestionIndex++;
+
+    // Check if there are more questions or end the quiz
+    if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+    } else {
+        endQuiz();
+    }
+    
 }
 
 function endQuiz(){
-    //finish quiz 
-    //take to scores page
+    clearInterval(timerInterval);
+
+    document.getElementById("quiz-container").style.display = "none";
+    document.getElementById("score-container").style.display = "block";
+
+    // SHOW SCORE
+    document.getElementById("final-score").textContent = score;
+}
+
+function submitScore() {
+    var initials = document.getElementById("user-initials").value;
+
+
+    localStorage.setItem("userScore", score);
+    localStorage.setItem("userInitials", initials);
+
+    
+    window.location.href = "score.html";
 }
